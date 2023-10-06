@@ -118,3 +118,59 @@ let update = (obj, key, val) => {
     updatedObj[key] = val;
     return updatedObj;
 }
+
+// OBJECT ENHANCEMENTS
+
+//1. Same key values
+
+function createInstructor(firstName, lastName) {
+    return {
+        firstName,
+        lastName
+    }
+}
+
+//----------------------------------------------------------------
+//2. Computed property names
+
+let favoriteNum = 9;
+
+let instructor = {
+    firstName: "Ozge",
+    [favoriteNum]: "This is my favorite number!"
+}
+
+//----------------------------------------------------------------
+//3. Object Methods
+
+let instructor2 = {
+    firstName: "Colt",
+    sayHi() {
+        return "Hi!"
+    },
+    sayBye() {
+        return this.firstName + " says bye";
+    }
+}
+
+//----------------------------------------------------------------
+//4. createAnimal function
+
+const D = createAnimal("dog", "bark", "Woooof!")
+// {species: "dog", bark: ƒ}
+D.bark()  //"Woooof!"
+
+const S = createAnimal("sheep", "bleet", "BAAAAaaaa")
+// {species: "sheep", bleet: ƒ}
+S.bleet() //"BAAAAaaaa"
+
+function createAnimal(species, verb, noise) {
+    return {
+        species: species,
+        [verb]() {
+            return noise;
+        }
+    }
+}
+
+//----------------------------------------------------------------

@@ -173,4 +173,90 @@ function createAnimal(species, verb, noise) {
     }
 }
 
+
+//DESTRUCTURING
+
+//1. Object destructuring
+
+//What does the following code return/print?
+let facts = {numPlanets: 8, yearNeptuneDiscovered: 1846};
+let {numPlanets, yearNeptuneDiscovered} = facts;
+
+console.log(numPlanets); // 8
+console.log(yearNeptuneDiscovered); // 1846
+
+//What does the following code return/print?
+let planetFacts = {
+    numPlanet: 8,
+    yearNeptuneDiscovered: 1846,
+    yearMarsDiscovered: 1659
+  };
+  
+  let {numPlanet, ...discoveryYears} = planetFacts;
+  
+  console.log(discoveryYears); // ? {yearNeptuneDiscovered: 1846, yearMarsDiscovered: 1659}
+
+//What does the following code return/print?
+function getUserData({firstName, favoriteColor="green"}){
+    return `Your name is ${firstName} and you like ${favoriteColor}`;
+  }
+  
+  getUserData({firstName: "Alejandro", favoriteColor: "purple"}) // your name is Alejandro and you like purple
+  getUserData({firstName: "Melissa"}) // Your name is Melissa and you like green.
+  getUserData({}) // Your name is undefined and you like green.
+
 //----------------------------------------------------------------
+//2. Array Destructuring
+
+//What does the following code return/print?
+let [first, second, third] = ["Maya", "Marisa", "Chi"];
+
+console.log(first); // Maya
+console.log(second); // Marisa
+console.log(third); // Chi
+
+//What does the following code return/print?
+let [raindrops, whiskers, ...aFewOfMyFavoriteThings] = [
+    "Raindrops on roses",
+    "whiskers on kittens",
+    "Bright copper kettles",
+    "warm woolen mittens",
+    "Brown paper packages tied up with strings"
+  ]
+  
+  console.log(raindrops); // raindrops on roses
+  console.log(whiskers); // whiskers on kittens
+  console.log(aFewOfMyFavoriteThings); // ['Bright copper kettles', 'warm woolen mittens', 'Brown paper packages tied up with strings']
+
+//What does the following code return/print?
+let numbers = [10, 20, 30];
+[numbers[1], numbers[2]] = [numbers[2], numbers[1]]
+
+console.log(numbers) // [10, 30, 20]
+
+//----------------------------------------------------------------
+//3. ES2015 Refactoring
+
+//Object
+
+let obj = {
+    numbers: {
+        a:1,
+        b:2
+    }
+};
+
+let {a, b} = obj.numbers;
+
+//Array
+
+[arr[0], arr[1]] = [arr[1], arr[0]];
+
+//----------------------------------------------------------------
+
+//raceResults() write a function called raceResults which a single array argument. It should return an object with the keys first, second, third and rest.
+// one line function should use an arrow function, destructuring enhanced object assignment(same key/value shortcut)
+raceResults(['Tom', 'Margaret', 'Allison', 'David', 'Pierre']);
+
+let receResults = ([first, second, third, ...rest]) => ({first, second, third, rest});
+
